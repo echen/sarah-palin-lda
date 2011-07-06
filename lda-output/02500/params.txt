@@ -1,0 +1,1 @@
+LDAModelParams(30,9840,SymmetricDirichletParams(0.01),SymmetricDirichletParams(0.01))
