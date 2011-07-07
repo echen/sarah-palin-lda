@@ -29,7 +29,7 @@ val text = {
   Column(2) ~>                           	// select column containing text
   TokenizeWith(tokenizer) ~>             	// tokenize with tokenizer above
   TermCounter() ~>                       	// collect counts (needed below)
-  TermMinimumDocumentCountFilter(10) ~>  	// filter terms in < 30 docs
+  TermMinimumDocumentCountFilter(10) ~>  	// filter terms in < 10 docs
   TermDynamicStopListFilter(30) ~>       	// filter out 30 most common terms
   DocumentMinimumLengthFilter(10)         // take only docs with >= 10 terms
 }
