@@ -1,8 +1,8 @@
 # How to Run
 * Unzip `emails.zip` to get a folder of all the Sarah Palin emails (thanks [Sunlight Labs](http://sunlightlabs.com/)!).
-* Run `1-produce-lda-file.rb` to get a file ready in a format ready to be run through the LDA algorithm (thanks [Stanford](http://nlp.stanford.edu/software/tmt/tmt-0.3/)!).
-* Run `2-training.scala` to train the LDA model on Sarah Palin's emails.
-* Run `3-infer.scala` to perform topic inference.
+* Run `1-produce-lda-file.rb` to get a file ready in a format ready to be run through the LDA algorithm (thanks [Stanford](http://nlp.stanford.edu/software/tmt/tmt-0.3/)!). Specifically, this takes all the emails and collects them and parses them a bit into a single file ready to be used by `2-training.scala` and `3-infer.scala`.
+* Run `2-training.scala` (using the `tmt-0.3.3.jar` file) to train the LDA model on Sarah Palin's emails, using the output of the previous step. `java -Xmx1024m -jar tmt-0.3.3.jar -Dscalanlp.distributed.hub=socket://42-149-58-18.rev.home.ne.jp:53686/hub -Dscalanlp.distributed.id=/tmt/8 edu.stanford.nlp.tmt.TMTMain "2-training.scala"` should work. This outputs a folder which contains, among other things, a trained LDA model.
+* Run `3-infer.scala` (using the `tmt-0.3.3.jar` file) to perform topic inference. `java -Xmx1024m -jar tmt-0.3.3.jar -Dscalanlp.distributed.hub=socket://42-149-58-18.rev.home.ne.jp:53686/hub -Dscalanlp.distributed.id=/tmt/8 edu.stanford.nlp.tmt.TMTMain "3-infer.scala"` should work. Specifically, this takes the topic model learned in the previous step and applies it to the file produced by `1-produce-lda-file.rb`, and outputs a folder containing information on topics and the topic distributions of each document.
 
 # LDA-based Email Browser
 
